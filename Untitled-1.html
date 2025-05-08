@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Calculadora de Tarifas - La Fórmula SPA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #f00; /* Vuelta a velocidad y adrenalina */
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #f00;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Calculador de Tarifas - La Fórmula SPA</h1>
+
+<form id="tarifaForm">
+    <label for="origen">Origen</label>
+    <input type="text" id="origen" placeholder="Ingrese dirección o lugar de origen" required />
+
+    <label for="destino">Destino</label>
+    <input type="text" id="destino" placeholder="Ingrese dirección o lugar de destino" required />
+
+    <button type="submit">Calcular tarifa</button>
+</form>
+
+<div id="resultado"></div>
+
+<!-- API de Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&libraries=places"></script>
+
+<script>
+    // Reemplaza 'TU_API_KEY' por tu clave de Google Maps API
+    const form = document.getElementById('tarifaForm');
+    const resultadoDiv = document.getElementById('resultado');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const origen = document.getElementById('origen').value;
+        const destino = document.getElementById('destino').value;
+
+        if (origen && destino) {
+            calcularDistancia(origen, destino);
+        }
+    });
+
+    function calcularDistancia(origen, destino) {
+        const directionsService = new google.maps.DirectionsService();
+
+        directionsService.route({
+            origin: origen,
+            destination: destino,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                const route = response.routes[0];
+                const distanceMeters = route.legs[0].distance.value;
+                const distanceKm = (distanceMeters / 1000).toFixed(2);
+                const tarifa = (distanceKm * 1000).toFixed(0); // tarifa en pesos
+
+                resultadoDiv.innerHTML = `
+                    <p>Distancia: ${distanceKm} km</p>
+                    <p>Tarifa ($1.000 por km): $${tarifa} CLP</p>
+                `;
+            } else {
+                resultadoDiv.innerHTML = `<p>No se pudo calcular la distancia. Verifica las direcciones.</p>`;
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

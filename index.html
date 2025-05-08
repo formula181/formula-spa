@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FÓRMULA SPA - Transporte Ejecutivo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+    .hero {
+      background-image: url('formula1-black-gold.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: multiply;
+    }
+  </style>
+</head>
+<body class="font-sans">
+  <!-- Encabezado -->
+  <header class="bg-gradient-to-r from-black to-gray-900 p-4 flex justify-between items-center shadow-lg">
+    <h1 class="text-3xl font-bold text-yellow-400">FÓRMULA SPA</h1>
+    <a href="https://wa.me/56XXXXXXXX" class="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded">
+      WhatsApp
+    </a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero text-center py-32 px-4">
+    <h2 class="text-4xl font-bold text-yellow-400">Transporte Ejecutivo de Alto Nivel</h2>
+    <p class="text-lg mt-4 text-gray-200">Traslados | Turismo | Encomiendas</p>
+  </section>
+
+  <!-- Formulario de Reserva -->
+  <section class="p-8 bg-gray-900">
+    <h3 class="text-2xl font-semibold mb-6 text-yellow-400">Reserva tu Viaje</h3>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" placeholder="Origen" class="p-3 rounded bg-black text-white border border-yellow-500" />
+      <input type="text" placeholder="Destino" class="p-3 rounded bg-black text-white border border-yellow-500" />
+      <input type="datetime-local" class="p-3 rounded bg-black text-white border border-yellow-500" />
+      <select class="p-3 rounded bg-black text-white border border-yellow-500">
+        <option>Traslado</option>
+        <option>Turismo</option>
+        <option>Encomienda</option>
+      </select>
+      <button type="submit" class="col-span-1 md:col-span-2 bg-yellow-500 text-black py-3 font-bold rounded hover:bg-yellow-400">
+        Calcular Precio
+      </button>
+    </form>
+  </section>
+
+  <!-- Servicios -->
+  <section class="p-8 bg-black">
+    <h3 class="text-2xl font-semibold mb-6 text-yellow-400">Nuestros Servicios</h3>
+    <ul class="space-y-4">
+      <li>Traslados al aeropuerto con puntualidad.</li>
+      <li>Entrega de encomiendas dentro y fuera de Chicureo.</li>
+      <li>Turismo por la Región Metropolitana y alrededores.</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center p-4 text-sm text-gray-400">
+    © 2025 FÓRMULA SPA | Chicureo, Santiago | contacto@formulaspa.cl
+  </footer>
+</body>
+</html>
